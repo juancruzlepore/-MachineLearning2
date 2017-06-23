@@ -1,0 +1,39 @@
+load fisheriris;
+ratio = 1/3;
+N = 150;
+n = floor(ratio * N);
+trainingIndexes = randperm(N, n);
+trainingIndexes = sort(trainingIndexes);
+training = meas(trainingIndexes,[1,2]);
+testingIndexes = 1:(N-n);
+auxIndex = 1;
+currentIndex = 1;
+for i = 1:N
+    if(auxIndex <= length(trainingIndexes) && trainingIndexes(auxIndex) == i)
+        auxIndex = auxIndex + 1;
+    else
+        testingIndexes(currentIndex) = i;
+        currentIndex = currentIndex + 1;
+    end
+end
+
+sample = meas(testingIndexes, [1,2]);
+% sample = meas(indexes,[1,2]);
+for i = 1:length(trainingIndexes)
+    group(i) = species(trainingIndexes(i));
+end
+
+group
+results = knnclassify(sample,training,group,k,'euclidean');
+errors = 0;
+for i = testingIndexes
+    if(i<=40 && ~strcmp('setosa',results(i)))
+        errors = errors + 1;
+    elseif (i>40 && i<=80 && ~strcmp('versicolor',results(i)))
+        errors = errors + 1;
+    elseif (i>80 && i<=120 && ~strcmp('virginica',results(i)))
+        errors = errors + 1;
+    end
+end
+errors/1.2
+

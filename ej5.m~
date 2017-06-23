@@ -1,0 +1,3 @@
+[toignore,tateti] = xlsread('tateti.xlsx');
+intTateti = zeros(tateti()
+T = fitctree(tateti(:,1:9),tateti(:,10))

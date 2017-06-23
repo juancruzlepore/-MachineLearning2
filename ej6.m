@@ -1,3 +1,1 @@
-load fisheriris;
-training = meas([1:10,51:60,101:150],1)
-    
+ej6function(10, 2/3, [1,2,3,4])
