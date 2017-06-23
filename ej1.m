@@ -8,8 +8,9 @@ cumsum(latent)./sum(latent);
 %% a partir del biplot.. k = 3?
 
 k=3;
-[idx,C] = kmeans(num,6);
+[idx,C] = kmeans(num,3);
+
 %%analizar si se separaron por region
 
-
+idx
 %%CONSULTA>> tomo el k=3? o k = sqrt(n/2)?

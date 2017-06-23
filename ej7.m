@@ -1,4 +1,4 @@
-load autos.dat
+load autos
 %scatter(autos(:,2), autos(:,3))
 hold all;
 res = zeros(50,3);
